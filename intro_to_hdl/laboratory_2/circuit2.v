@@ -1,0 +1,20 @@
+module circuit2 (x1, x0, y1, y0, z0, z1, z2, z3);
+	input   x1, x0, y1, y0;
+	output z0, z1, z2, z3;
+	wire not_x0, not_x1, not_y0, not_y1;
+	wire and_1, and_2, and_3, and_4, and_5, and_6;
+	not (not_x0, x0);
+	not (not_x1, x1);
+	not (not_y0, y0);
+	not (not_y1, y1);
+	and (z0, y0, x0);
+	and (and_1, y1, x0, not_x1);
+	and (and_2, not_y0, y1, not_x0);
+	and (and_3, y0, not_x0, x1);
+	and (and_4, y0, not_y1, x1);
+	and (and_5, y1, not_x0, x1);
+	and (and_6, not_y0, y1, x1);
+	and (z3, y0, y1, x0, x1);
+	or (z1, and_1, and_2, and_3, and_4);
+	or (z2, and_5, and_6);
+endmodule
